@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Slide Show</title>
+    <script>
+        // Get the images from the internet
+        var images = [
+            'https://upload.wikimedia.org/wikipedia/commons/d/db/Blue_Cranes_%28Anthropoides_paradiseus%29_couple_parading_..._%2832457893122%29.jpg',
+            'https://upload.wikimedia.org/wikipedia/commons/2/26/Western_Striped_Albatross_I_IMG_0298.jpg'
+        
+        ];
+        
+        // Function to go to the previous image
+        function goPrev() {
+            var currentSrc = document.getElementById('result').src;
+            var currentIndex = images.indexOf(currentSrc);
+            if(currentIndex == 0){
+                document.getElementById('result').src = images[images.length - 1];
+            } else {
+                document.getElementById('result').src = images[currentIndex - 1];
+            }
+        }
+
+        // Function to go to the next image
+        function goNext() {
+            var currentSrc = document.getElementById('result').src;
+            var currentIndex = images.indexOf(currentSrc);
+            if(currentIndex == images.length - 1){
+                document.getElementById('result').src = images[0];
+            } else {
+                document.getElementById('result').src = images[currentIndex + 1];
+            }
+        }
+
+        
+        window.onload = function() {
+            document.getElementById('result').src = images[0];
+        };
+    </script>
+
+
+</head>
+<body>
+    <button onclick="goPrev()"> Prev </button>
+    <button onclick="goNext()" style="position:fixed;right:0"> Next </button>
+    <img id="result" style="display:block;width:100%">
+</body>
+
+<style>
+    body {
+        margin: 0;
+        background-color: black;
+    }
+</style>
+
+</html>
